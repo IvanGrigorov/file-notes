@@ -1,6 +1,6 @@
 {
-  "name": "file-notes",
-  "displayName": "File Notes",
+  "name": "notes-per-file",
+  "displayName": "Notes per file",
   "description": "Store notes per file",
   "publisher": "IvanGrigorov",
   "icon": "assets/file-notes.png",
@@ -16,18 +16,18 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:file-notes.openNotes",
-    "onCommand:file-notes.saveNotes"
+    "onCommand:notes-per-file.openNotes",
+    "onCommand:notes-per-file.saveNotes"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "file-notes.openNotes",
+        "command": "notes-per-file.openNotes",
         "title": "Open notes for file"
       },
       {
-        "command": "file-notes.saveNotes",
+        "command": "notes-per-file.saveNotes",
         "title": "Save notes for file"
       }
     ]

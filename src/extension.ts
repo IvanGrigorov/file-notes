@@ -5,11 +5,11 @@ import * as vscode from 'vscode';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	let opennotes = vscode.commands.registerCommand('file-notes.openNotes', () => {
+	let opennotes = vscode.commands.registerCommand('notes-per-file.openNotes', () => {
 		openNotes(context);
 	});
 
-	let savenotes = vscode.commands.registerCommand('file-notes.saveNotes', () => {
+	let savenotes = vscode.commands.registerCommand('notes-per-file.saveNotes', () => {
 		saveNotes(context);
 	});
 
@@ -53,7 +53,3 @@ function openNotes(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
-
-
-//"onCommand:file-notes.openNotes",
-//"onCommand:file-notes.saveNotes"
