@@ -2,9 +2,24 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+let myStatusBarItem: vscode.StatusBarItem;
+myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+myStatusBarItem.command = 'notes-per-file.openNotes';
+myStatusBarItem.text = "Notes";
+myStatusBarItem.tooltip = "Open the notes for the file";
+
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	
+	toggleStatusItem(context, vscode.window.activeTextEditor);
+
+
+	vscode.window.onDidChangeActiveTextEditor((editor) => {
+		toggleStatusItem(context, editor);
+	})
+
 	let opennotes = vscode.commands.registerCommand('notes-per-file.openNotes', () => {
 		openNotes(context);
 	});
@@ -16,6 +31,16 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(opennotes);
 	context.subscriptions.push(savenotes);
+}
+
+function toggleStatusItem(context: vscode.ExtensionContext, editor: vscode.TextEditor | undefined) {
+	const currentFileName = editor?.document.fileName || '';
+	if (context.globalState.get(currentFileName)) {
+		myStatusBarItem.show();
+	}
+	else {
+		myStatusBarItem.hide();
+	}
 }
 
 function saveNotes(context: vscode.ExtensionContext) {

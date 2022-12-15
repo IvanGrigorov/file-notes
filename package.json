@@ -16,8 +16,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:notes-per-file.openNotes",
-    "onCommand:notes-per-file.saveNotes"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
